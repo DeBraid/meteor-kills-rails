@@ -7,12 +7,9 @@
   <div class="reveal">
       <div class="slides">
           {{> selfIntro }}
+          {{> principals }}
           {{> theEnd}}
 
-          <section>
-              <section>Vertical Slide 1</section>
-              <section>Vertical Slide 2</section>
-          </section>
       </div>
   </div>
 
@@ -30,6 +27,69 @@
     </p>
   </section>
 
+  
+</template>
+<template name="principals">
+  <section>
+    <section>
+      <h4>meteor js - 7 Pricipals </h4>
+    </section>
+
+    <section>
+    
+      <h2>001</h2>
+      <h4>Pure JavaScript.</h4>
+      <p>Write your entire app in pure JavaScript. All the same APIs are available on the client and the server — including database APIs! — so the same code can easily run in either environment.</p>
+    </section>
+    <section>
+      
+      <h2>002</h2>
+      <h4>Live page updates.</h4>
+      <p>Just write your templates. They automatically update when data in the database changes. No more boilerplate redraw code to write. Supports any templating language.</p>
+    </section>
+    <section>
+      
+      <h2>003</h2>
+      <h4>Clean, powerful data synchronization.</h4>
+      <p>Write your client code as if it were running on the server and had direct access to the database. No more loading your data from REST endpoints.</p>
+    </section>
+    <section>
+      
+      <h2>004</h2>
+      <h4>Latency compensation.</h4>
+      <p>When a user makes a change, their screen updates immediately — no waiting for the server. If the server rejects their request or executes it differently, the client is patched up with what actually happened.</p>
+    </section>
+    <section>
+      
+      <h2>005</h2>
+      <h4>Hot Code Pushes.</h4>
+      <p>Update your app while users are connected without disturbing them. When you push a new version, the new code is seamlessly injected into each browser frame in which the app is open.</p>
+    </section>
+    <section>
+      
+      <h2>006</h2>
+      <h4>Sensitive code runs in a privileged environment.</h4>
+      <p>Write all of your code in JavaScript (if you want.) The user interface runs in your browser. The sensitive functions run in a privileged server environment.</p>
+    </section>
+    <section>
+      
+      <h2>007</h2>
+      <h4>Fully self-contained application bundles.</h4>
+      <p>One command to compile your entire application into a tarball. Unpack it anywhere there's node.js, run one command, and you're on the air. You're never locked into a particular hosting provider; you have all the code for the platform.</p>
+    </section>
+    <section>
+      
+      <h2>008</h2>
+      <h4>Interoperability.</h4>
+      <p>You can connect anything to Meteor, from native mobile apps to legacy databases to Arduinos. Just implement the simple DDP protocol.</p>
+    </section>
+    <section>
+      
+      <h2>009</h2>
+      <h4>Smart Packages.</h4>
+      <p>Meteor's Smart Packages are actually little programs that can inject code into the client or the server, or even hook into the bundler to preprocess your source. Great care has been taken to give the core Meteor packages the minimal set of dependencies, so you can use your favorite templating, testing, or DOM manipulation frameworks.</p>
+    </section>
+  </section>
   
 </template>
 
@@ -50,9 +110,12 @@
         <section>
           <h2>Canadian Economy Over Time: 1987 - 2014</h2>
           <p class="fragment roll-in">
-            Demo from <a href="http://www.hamiltoneconomicsummit.ca/economy-animation.html" target="_blank">#HES2014</a>.
+            GOOGLE: Polymer + Yeoman (Angular) <a href="https://www.youtube.com/watch?v=INH_OW4lFSs&feature=youtu.be" target="_blank"></a>.  They make stuff for engineers.
           </p>
+          <p>Parse HTML attributes (data-attr) and compile everything to javascript functions</p>
         </section>
+
+
         
         <section>
           <section>
@@ -76,93 +139,27 @@
         <!-- nested vertical slides for d3js -->
         <section>
           <section>
-            <h2>wrangle the data</h2>
+            <h2>others in the game</h2>
             <p>
-              combo of d3js and lodash
+              facebook
             </p>
-            <a href="#" class="image navigate-down">
-              <img width="260" height="90" src="http://www.pubnub.com/blog/wp-content/uploads/2014/01/D3.js-Logo.png" alt="Down arrow">
+            <a href="http://facebook.github.io/react/blog/2014/09/16/react-v0.11.2.html" class="image navigate-down">react.js
             </a>
           </section>
-          <section>
-            <h2>csv to json, then </h2>
-            <h3><pre><code data-trim contenteditable>
-              var myGDP = [],
-                  myURATE = [],
-                  myINCOME = [];
 
-              queue()
-                  .defer(d3.json, '/js/citiesgdp.json')
-                  .defer(d3.json, '/js/citiesIncome.json')
-                  .defer(d3.json, '/js/unemprate.json')
-                  .await(makeChart);
-            </code></pre></h3>
+          <section>
+            <h2>angular.js  </h2>
+            <h3>etc</h3>
 
           </section>
 
-          <section>
-            <h2>json to my custom data object</h2>
-            <h3><pre><code data-trim contenteditable>
-
-            function makeChart(error, gdp, income, urate) {
-
-                  var cities = Object.keys(gdp[0]);
-
-                  cities.forEach(function (city) {
-
-                      gdp.forEach(function (d) {
-
-            </code></pre></h3>
-
-          </section>
-
-          <section>
-            <h2>combine</h2>
-            <h3><pre><code data-trim contenteditable>
-
-                          gdp[city] = _.zip(d.Period, d[city]);
-
-                          var cityByCityGdp = {
-                              "city": city,
-                              "gdp": gdp[city]
-                          };
-
-                          myGDP.push(cityByCityGdp);
-
-                      });
-
-              var finalData = _.merge(myGDP, myINCOME, myURATE);
-            
-            </code></pre></h3>
-          </section>
-
-          <section>
-            <h2>result</h2>
-            <h3><pre><code data-trim contenteditable>
-
-              var finalData = _.merge(myGDP, myINCOME, myURATE);
-            
-              [
-               {
-                   city: "Toronto",
-                   gdp: [...],
-                   income: [...],
-                   uRate: [1987.01, 33423.22]
-               }
-              ];
-
-              
-            </code></pre></h3>
-            <a href="http://hes.brace.io">Or see devtools console here.</a>
-
-          </section>
-
+         
 
           <section>
             <h2>Lesson</h2>
-            <p>think in API terms.  what is the endpoint?</p>
-            <p>work backwards, or inside out.</p>
-            <p>build each array or object, then combine</p>
+            <p>YMMV</p>
+            <p>think of the desired outcome</p>
+            <p>time or money? both</p>
           </section>
         </section>
         <!-- end d3js vertical section -->
@@ -170,7 +167,7 @@
         <!-- nested vertical slides for angular -->
         <section>
           <section>
-            <h4>angular search box</h4>
+            <h4>meteor js - 7 Pricipals </h4>
             <p>boilerplate for auto complete</p>
             <img src="http://www.opensourceconnections.com/blog/wp-content/uploads/2013/08/angularjs.png" width="300" height="300" alt="Angular">
 
@@ -191,6 +188,17 @@
         <!-- end amgular vertical section -->
 
         <section>
+              <h2>Further Reading</h2>
+                <a href="http://joshowens.me/how-to-scale-a-meteor-js-app/">Scaling Meteor App</a>
+          <p>
+            more links.. 
+          </p>
+          <p>
+            javascript ftw
+          </p>
+        </section>
+
+                <section>
           <h2>Wrap UP</h2>
           <p>
             inside out data
@@ -199,7 +207,6 @@
             javascript ftw
           </p>
         </section>
-
         
 </template>        
 
