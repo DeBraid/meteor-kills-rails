@@ -7,8 +7,11 @@
   <div class="reveal">
       <div class="slides">
           {{> selfIntro }}
+          {{> frameworkStory }}
           {{> principals }}
-          {{> theEnd}}
+          {{> meteorIs }}
+          {{> outsideLinks }}
+          {{> theEnd }}
 
       </div>
   </div>
@@ -17,29 +20,35 @@
 
 <template name="selfIntro">
   <section>
-    <h1>Meteor Will Kills Rails</h1>
-    <h3>web frameworks for rapid prototypes and production</h3>
+    <h1>Meteor Will Kill Rails</h1>
+    <h3>web framework wars</h3>
     <p>
-      <small>By <a href="http://cacheflow.ca">Derek Braid</a> || <a href="http://twitter.com/Royal_Arse">@Royal_Arse</a></small>
+      <small>by Derek Braid</small>
     </p>
     <p>
       <small><a href="http://cacheflow.ca">cacheflow.ca</a></small>
     </p>
+    <p>
+      <small><a href="http://twitter.com/Royal_Arse">@Royal_Arse</a></small>
+    </p>
+    
   </section>
 
   
 </template>
+
 <template name="principals">
   <section>
     <section>
-      <h4>meteor js - 7 Pricipals </h4>
+      <h2>meteor js - Pricipals </h2>
+      <p><a href="https://www.meteor.com/learn-meteor" target="_blank">Meteor Homepage</a></p>
     </section>
 
     <section>
     
       <h2>001</h2>
       <h4>Pure JavaScript.</h4>
-      <p>Write your entire app in pure JavaScript. All the same APIs are available on the client and the server — including database APIs! — so the same code can easily run in either environment.</p>
+      <p>Write your entire app in pure JavaScript. All the same APIs on the client/server/database</p>
     </section>
     <section>
       
@@ -69,13 +78,13 @@
       
       <h2>006</h2>
       <h4>Sensitive code runs in a privileged environment.</h4>
-      <p>Write all of your code in JavaScript (if you want.) The user interface runs in your browser. The sensitive functions run in a privileged server environment.</p>
+      <p>The user interface runs in your browser. The sensitive functions run in a privileged server environment.</p>
     </section>
     <section>
       
       <h2>007</h2>
       <h4>Fully self-contained application bundles.</h4>
-      <p>One command to compile your entire application into a tarball. Unpack it anywhere there's node.js, run one command, and you're on the air. You're never locked into a particular hosting provider; you have all the code for the platform.</p>
+      <p>One command to compile your entire application into a tarball (or deploy). Unpack it anywhere there's node.js, run one command, and you're on the air. You're never locked into a particular hosting provider; you have all the code for the platform.</p>
     </section>
     <section>
       
@@ -89,127 +98,116 @@
       <h4>Smart Packages.</h4>
       <p>Meteor's Smart Packages are actually little programs that can inject code into the client or the server, or even hook into the bundler to preprocess your source. Great care has been taken to give the core Meteor packages the minimal set of dependencies, so you can use your favorite templating, testing, or DOM manipulation frameworks.</p>
     </section>
+
+    <section>
+      <h2>010</h2>
+      <h4>Show me again, but  <a href="http://meteor101.com/#/2">with pictures</a></h4>
+    </section>
   </section>
+  
+</template> 
+
+
+<template name="meteorIs">
+    <section>
+        <section>
+            <h4>meteor is/can</h4>
+            <ul>
+                <li class="fragment roll-in">make mobile apps near native</li>
+                <li class="fragment roll-in">quickly build MVPs</li>
+                <li class="fragment roll-in">scale</li>
+                <li class="fragment roll-in">well funded</li>
+                <li class="fragment roll-in">driven by node js</li>
+                <li class="fragment roll-in">sum of part, and a great whole</li>
+            </ul>
+
+        </section>
+
+        <section>
+            <h4>DDP</h4>
+            <ul>
+                <li class="fragment roll-in">DDP is a very simple protocol. It's just a codification of what you'd inevitably write yourself if you built this by hand</li> 
+            </ul>
+            <p class="fragment roll-in"><img src="http://i.imgur.com/aEKmOIt.gif" alt=""></p>
+        </section>
+
+        <section>
+            <h4>Pub/Sub</h4>
+            <ul>
+                <li class="fragment roll-in">On the server, you define a realtime queries using <pre><code>Meteor.publish</code></pre>. You can pass an arbitrary JavaScript function to Meteor.publish, so you can publish data from any source: your database, IMAP, or the forklifts in your warehouse.</li>
+                <li class="fragment roll-in">On the client, you call <pre><code>Meteor.subscribe</code></pre> to connect to a publication endpoint, receive the data, and listen for updates. </li>                
+            </ul>
+        </section>
+
+        <section>
+          <ul>
+            <li>The data is inserted directly into Meteor's client-side cache, so you can bind your HTML templates to it and they'll update automatically.</li>
+                <li class="fragment roll-in">Meteor's DDP implementation handles the rest. It intelligently polls your database to pick up changes and push them down to the client. And it can simulate your model code on the client, so your users see their screens update immediately without waiting for the network.</li>
+          </ul>
+        </section>
+
+        <section>
+            <h4>magic</h4>
+            <ul>
+                <li class="fragment roll-in">DDP is a standard way to solve the biggest problem facing client-side JavaScript developers:
+                    <ul>
+                        <li class="fragment roll-in">querying a server-side database</li>
+                        <li class="fragment roll-in">sending the results down to the client</li>
+                        <li class="fragment roll-in">pushing changes to the client whenever anything changes in the database</li>
+                        <p class="fragment roll-in">
+                            <img src="http://i.imgur.com/DkXOSVr.gif" alt="">
+                        </p>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+    </section>
+</template>
+
+<template name="boilerplate">
   
 </template>
 
-<template name="slides">
+<template name="frameworkStory">
+  
+    <section>
+    <h3>was is a web framework?</h3>
+    <h3>what is software?</h3>
+      <ul>
+        <li class="fragment roll-out">The web was originally designed to work in the same way that mainframes worked in the 70s. </li>
+        <li class="fragment roll-out">The application server rendered a screen and sent it over the network to a dumb terminal.          
+        </li> 
+        <p class="fragment roll-out">
+          <img src="http://i.imgur.com/KymSdVD.gif" alt="">
+        </p>
+
+      </ul>
+    </section>
+
+    <section>
+      <ul id="fragments">
+        <li class="fragment roll-out">This model served the Web well for over a decade. It gave rise to LAMP, Rails, Django, PHP.</li>
+        <li class="fragment roll-out">But the best teams, with the biggest budgets and the longest schedules, now build applications in JavaScript that run on the client.</li>  
+       <li class="fragment roll-out">Modern UI/UX, don't reload pages, reactive real-time data, everywhere.</li>
+       <p class="fragment roll-out">
+          <img src="http://i.imgur.com/BKtkfiR.gif" alt="">
+        </p>
+      </ul>
+    </section>
+</template>
+
+<template name="outsideLinks">
   <section>
-          <section id="fragments">
-            <h2>Goals</h2>
-            
-            <ul>
-              <li class="fragment roll-in">from csv to dancing balls -- d3 </li>
-              <p></p>
-              <p></p>
-              <li class="fragment roll-in">interaction yields information -- angular </li>
-            </ul> 
-          </section>
-        </section>
+    <h2>resources</h2>
+    <h4><a href="http://meteor101.com/#/17" target="_blank">Meteor 101</a></h4>
+    <h4><a href="http://www.meteorpedia.com/read/Main_Page" target="_blank">Meteorpedia</a></h4>
 
-        <section>
-          <h2>Canadian Economy Over Time: 1987 - 2014</h2>
-          <p class="fragment roll-in">
-            GOOGLE: Polymer + Yeoman (Angular) <a href="https://www.youtube.com/watch?v=INH_OW4lFSs&feature=youtu.be" target="_blank"></a>.  They make stuff for engineers.
-          </p>
-          <p>Parse HTML attributes (data-attr) and compile everything to javascript functions</p>
-        </section>
+    <h4><a href="http://joshowens.me/how-to-scale-a-meteor-js-app/" target="_blank">Scaling Meteor Js App</a></h4>
+    <h4><a href="https://meteor.hackpad.com/" target="_blank">HackPad - Meteor apps in the browser</a></h4>
+  </section>
 
-
-        
-        <section>
-          <section>
-          <h4>This talk is</h4>
-            <h2>Why Angular & d3</h2>
-              <a class="test">
-                <img width="380" height="326" src="http://blog.goodsamcamping.com/wp-content/uploads/2012/06/bear-06-24-grizzly-bear_full_600-580x386.gif" alt="Bear">
-              </a>
-          </section>
-
-          <section>
-          <h4>This talk is not</h4>
-
-            <h2>Best Practices</h2>
-              <a class="test">
-                <img width="380" height="326" src="http://www.graphics20.com/wp-content/uploads/2013/06/Funny-Noob-49.jpg" alt="giraffe and lion">
-              </a>
-          </section>
-        </section>
-
-        <!-- nested vertical slides for d3js -->
-        <section>
-          <section>
-            <h2>others in the game</h2>
-            <p>
-              facebook
-            </p>
-            <a href="http://facebook.github.io/react/blog/2014/09/16/react-v0.11.2.html" class="image navigate-down">react.js
-            </a>
-          </section>
-
-          <section>
-            <h2>angular.js  </h2>
-            <h3>etc</h3>
-
-          </section>
-
-         
-
-          <section>
-            <h2>Lesson</h2>
-            <p>YMMV</p>
-            <p>think of the desired outcome</p>
-            <p>time or money? both</p>
-          </section>
-        </section>
-        <!-- end d3js vertical section -->
-
-        <!-- nested vertical slides for angular -->
-        <section>
-          <section>
-            <h4>meteor js - 7 Pricipals </h4>
-            <p>boilerplate for auto complete</p>
-            <img src="http://www.opensourceconnections.com/blog/wp-content/uploads/2013/08/angularjs.png" width="300" height="300" alt="Angular">
-
-          </section>
-
-          <section>
-            <h4>Provide a list of cities as an array</h4>
-            <h3><pre><code data-trim contenteditable>
-              function TypeaheadCtrl($scope) {
-                 
-                $scope.cities = ["Toronto","St. John's","Montreal","Vancouver","Saskatoon"]; 
-
-              }
-            </code></pre></h3>
-            <p>go-go ng-repeat</p>
-          </section>
-        </section>
-        <!-- end amgular vertical section -->
-
-        <section>
-              <h2>Further Reading</h2>
-                <a href="http://joshowens.me/how-to-scale-a-meteor-js-app/">Scaling Meteor App</a>
-          <p>
-            more links.. 
-          </p>
-          <p>
-            javascript ftw
-          </p>
-        </section>
-
-                <section>
-          <h2>Wrap UP</h2>
-          <p>
-            inside out data
-          </p>
-          <p>
-            javascript ftw
-          </p>
-        </section>
-        
-</template>        
-
+</template>
 <template name="theEnd">
   <section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
     <h2>THE END</h2>
